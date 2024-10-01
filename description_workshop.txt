@@ -1,0 +1,30 @@
+>prismBox, a mod built by Prismatica.
+=====================================
+
+When I started modding, I found myself consistently restarting from the ground up with new functions and ideas.
+Instead of re-inventing the wheel like I have been, I instead created a "pseudo-library" to help expedite the process.
+That is what >prismBox is, a collection of helpers and framework changes to make modding for me easier.
+
+FEATURES OF NOTE
+
+EC Based Architecture
+- Extends to Items, Players and NPCs.
+- Soon to introduce: Projectiles, Tiles.
+
+Extension Shorthands
+- A variety of different extensions for NPCs, Players and Items to shorthand code.
+- Notables include basic NPC movement, Player States and Entities surrounding other Entities (i.e. closest player, players in range, etc.)
+- UI Extension as well for shortening the default settings in initialization.
+
+Helpers
+- World File Loading in-mod via file path.
+- Crossmod Helper for basic item modification.
+- Localization for getting a random localtext from a list (useful for dialogue / random responses)
+
+
+
+IN THE WORKS
+- Status Effects
+- A more "data-oriented" and easier to manage buff system.
+- Features stackable buffs, localized names and tooltips, custom time calculations, etc.
+- Status Effects are NOT Components!

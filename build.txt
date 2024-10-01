@@ -1,0 +1,3 @@
+displayName = >prismBox
+author = prismatica
+version = 0.5
