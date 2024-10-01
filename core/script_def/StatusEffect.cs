@@ -1,5 +1,8 @@
 ﻿namespace PrismBox.core.script_def
 {
+    /// <summary>
+    /// A data-oriented way of handling Buffs.
+    /// </summary>
     internal class StatusEffect : ModType, ILocalizedModType
     {
         /// <summary>

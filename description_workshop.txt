@@ -24,7 +24,9 @@ Helpers
 
 
 IN THE WORKS
-- Status Effects
+
+Status Effects
 - A more "data-oriented" and easier to manage buff system.
 - Features stackable buffs, localized names and tooltips, custom time calculations, etc.
 - Status Effects are NOT Components!
+
