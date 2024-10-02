@@ -2,9 +2,13 @@
 {
     /// <summary>
     /// A data-oriented way of handling Buffs.
+    /// <br></br>
+    /// Considered Experimental. 
     /// </summary>
     internal class StatusEffect : ModType, ILocalizedModType
     {
+        public static Asset<Texture2D> effectIcon;
+
         /// <summary>
         /// Whether or not this effect can accumulate stacks.
         /// </summary>
@@ -60,12 +64,7 @@
         public virtual void OnStackReduce(Player plr) { }
         public virtual void OnTimeRunout(Player plr) { }
 
-        protected sealed override void Register()
-        {
-            ModTypeLookup<StatusEffect>.Register(this);
-
-            //ID = StatusEffectLoader.Add(this);
-        }
+        protected sealed override void Register() { ModTypeLookup<StatusEffect>.Register(this); }
 
         public sealed override void SetupContent()
         {

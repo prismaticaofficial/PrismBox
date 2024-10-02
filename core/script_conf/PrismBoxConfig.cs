@@ -6,7 +6,7 @@
 
         [Header("Debug")]
         [DefaultValue(false)]
-        public bool EnableDebug { get; set; }
+        public bool EnableDebug { get; set; } //working on UI for this one
 
         [Header("Experimental Features")]
         [DefaultValue(false)]

@@ -4,6 +4,13 @@ namespace PrismBox.core.script_hel
 {
     internal class WorldHelper
     {
+        /// <summary>
+        /// Allows for the easy transfer between or to a particular world file.
+        /// </summary>
+        /// <param name="pathTo">Path to the specific world file</param>
+        /// <param name="fromWorld">Whether or not to save the previous world, if one is active</param>
+        /// <param name="isCloud">Whether or not the world is a cloud-saved world</param>
+        /// <returns>False if the world file doesn't exist, true otherwise.</returns>
         public static bool ToWorld(string pathTo, bool fromWorld = false, bool isCloud = false)
         {
             if (!WorldFile.IsValidWorld(pathTo, isCloud))

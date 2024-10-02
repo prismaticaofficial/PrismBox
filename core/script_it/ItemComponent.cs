@@ -33,6 +33,19 @@ namespace PrismBox.core.script_it
         public virtual void C_ModTooltips(Item it, List<TooltipLine> tt) { }
         public virtual void C_NetRecieve(Item it, BinaryReader bR) { }
         public virtual void C_NetSend(Item it, BinaryWriter bW) { }
+        /// <summary>
+        /// Allows you to draw in front of the item in the inventory, even if PreDraw returns false.
+        /// </summary>
+        /// <param name="it">The item in question</param>
+        /// <param name="sB"></param>
+        /// <param name="pos">The position of the item in the inventory</param>
+        /// <param name="fr">The item's frame</param>
+        /// <param name="dC"></param>
+        /// <param name="iC"></param>
+        /// <param name="orig"></param>
+        /// <param name="sc">The scale of the item</param>
+        public virtual void C_PostDrawInInv(Item it, SpriteBatch sB, Vector2 pos, Rectangle fr, Color dC, Color iC, Vector2 orig, float sc) { }
+        public virtual void C_PostDrawInWorld(Item it, SpriteBatch sB, Color lC, Color aC, float rot, float sc, int wAI) { }
         public virtual void C_RClk(Item it, Player plr) { }
         public virtual void C_SetDefaults(Item it) { }
         public virtual void C_Unload() { }
@@ -69,69 +82,61 @@ namespace PrismBox.core.script_it
         {
             if (Enabled)
                 C_Load();
-
-            base.Load();
         }
         public sealed override void LoadData(Item item, TagCompound tag)
         {
             if (Enabled)
                 DataHandler(item, tag, false);
-
-            base.LoadData(item, tag);
         }
         public sealed override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             if (Enabled)
                 C_ModTooltips(item, tooltips);
-
-            base.ModifyTooltips(item, tooltips);
         }
         public sealed override void NetReceive(Item item, BinaryReader reader)
         {
             if (Enabled)
                 C_NetRecieve(item, reader);
-
-            base.NetReceive(item, reader);
         }
         public sealed override void NetSend(Item item, BinaryWriter writer)
         {
             if (Enabled)
                 C_NetSend(item, writer);
         }
+        public sealed override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            if (Enabled)
+                C_PostDrawInInv(item, spriteBatch, position, frame, drawColor, itemColor, origin, scale);
+        }
+        public sealed override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            if (Enabled)
+                C_PostDrawInWorld(item, spriteBatch, lightColor, alphaColor, rotation, scale, whoAmI);
+        }
         public sealed override void RightClick(Item item, Player player)
         {
             if (Enabled)
                 C_RClk(item, player);
-
-            base.RightClick(item, player);
         }
         public sealed override void SaveData(Item item, TagCompound tag)
         {
             if (Enabled)
                 DataHandler(item, tag, true);
-
-            base.SaveData(item, tag);
         }
         public sealed override void SetDefaults(Item entity)
         {
             if (Enabled)
                 C_SetDefaults(entity);
-
-            base.SetDefaults(entity);
         }
         public sealed override void Unload()
         {
             if (Enabled)
                 C_Unload();
-
-            base.Unload();
         }
         public sealed override void UpdateInventory(Item item, Player player)
         {
             if (Enabled)
                 C_UpdateInv(item, player);
-
-            base.UpdateInventory(item, player);
         }
         #endregion
     }

@@ -1,8 +1,12 @@
 ﻿namespace PrismBox.core.script_it.prism_it_comps
 {
+    /// <summary>
+    /// An Item Component which marks an item "Deprecated", which will default all of its values and render it useless. <br></br>
+    /// Useful for getting rid of items which no longer serve a particular purpose (such as Vanilla total conversions).
+    /// </summary>
     internal class DeprecatedComponent : ItemComponent
     {
-        public override void S_SetDefaults(Item it)
+        public override void C_SetDefaults(Item it)
         {
             it.accessory = false;
             it.autoReuse = false;
@@ -87,7 +91,7 @@
             it.reuseDelay = 0;
             it.shieldSlot = 0;
             it.shoeSlot = 0;
-            it.shoot = 0;
+            it.shoot = ProjectileID.None;
             it.shopSpecialCurrency = -1;
             it.stack = 1;
             it.tileBoost = 0;
@@ -108,10 +112,10 @@
             it.UseSound = null;
             it.useStyle = ItemUseStyleID.None;
 
-            base.S_SetDefaults(it);
+            base.C_SetDefaults(it);
         }
 
-        public override void S_ModTooltips(Item it, List<TooltipLine> tt)
+        public override void C_ModTooltips(Item it, List<TooltipLine> tt)
         {
             tt.Clear();
             tt.Add(new TooltipLine(Mod, "deprecatedName", $"{it.Name} (Deprecated)"));
@@ -119,7 +123,7 @@
                 "This item as been deprecated.\n" +
                 "This item serves no function and can be safely discarded."));
 
-            base.S_ModTooltips(it, tt);
+            base.C_ModTooltips(it, tt);
         }
     }
 }
