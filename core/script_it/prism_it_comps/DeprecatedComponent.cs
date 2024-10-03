@@ -112,6 +112,9 @@
             it.UseSound = null;
             it.useStyle = ItemUseStyleID.None;
 
+            foreach (Recipe r in Main.recipe.Where(x => x.createItem == it || x.ContainsIngredient(it.type)))
+                r.DisableRecipe();
+
             base.C_SetDefaults(it);
         }
 
