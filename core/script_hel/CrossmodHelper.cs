@@ -1,7 +1,72 @@
-﻿namespace PrismBox.core.script_hel
+﻿using System.Threading.Tasks;
+
+namespace PrismBox.core.script_hel
 {
     internal class CrossmodHelper
     {
+        /// <summary>
+        /// Safely attempts to disable a mod by its provided internal name. Useful for disabling mods that directly conflict with yours. <br></br>
+        /// Only call in <see cref="Mod.PostSetupContent()"/> to avoid breakage. <br><br></br></br>
+        /// 
+        /// It is also advised to not use this ad nauseum, as disabling mods without warrant is generally a poor practice.
+        /// </summary>
+        /// <param name="modName">The internal name of the mod to disable. Case sensitive.</param>
+        /// <returns>True if the mod exists and was disabled, else false.</returns>
+        public static void DisableMod(string modName)
+        {
+            var method = typeof(ModLoader).GetMethod("DisableMod", BindingFlags.Static | BindingFlags.NonPublic);
+
+            if (ModLoader.Mods.Any(x => x.Name == modName))
+            {
+                method.Invoke(null, [ModLoader.Mods.Where(x => x.Name == modName)]);
+                PrismBox.FormatToLogs(null, $"[PrismBox] Disabled {modName}", PrismBox.LogType.INFO);
+            }
+
+            while (Main.menuMode != 0)
+            {
+                Main.menuMode = 10006;
+                break;
+            }
+        }
+
+        /// <summary>
+        /// Takes in an array of Mod internal names and disables them if present. <br></br>
+        /// Only call in <see cref="Mod.PostSetupContent()"/> to avoid breakage. <br><br></br></br>
+        /// 
+        /// It is also advised to not use this ad nauseum, as disabling mods without warrant is generally a poor practice.
+        /// </summary>
+        /// <param name="modNames">An array of mod internal names to disable. Case sensitive.</param>
+        public static void DisableModList(string[] modNames)
+        {
+            var method = typeof(ModLoader).GetMethod("DisableMod", BindingFlags.Static | BindingFlags.NonPublic);
+
+            Task.Run(() =>
+            {
+                bool success = false;
+
+                for (int i = 0; i < ModLoader.Mods.Length; i++)
+                {
+                    if (modNames.Contains(ModLoader.Mods[i].Name))
+                    {
+                        success = true;
+                        method.Invoke(null, [ModLoader.Mods[i].Name]);
+                        PrismBox.FormatToLogs(null, $"[PrismBox] Disabled {ModLoader.Mods[i].Name}", PrismBox.LogType.INFO);
+                    }
+                }
+
+                if (!success)
+                    return;
+
+                while (Main.menuMode != 0)
+                {
+                    Main.menuMode = 10006;
+                    break;
+                }
+            });
+        }
+
+        //Credit for the above mod disable methods go to Tomat, aka Steviegt6.
+
         /// <summary>
         /// Grabs a particular ModType entity. <br></br>
         /// To quickly (and directly) modify an entity, use <see cref="QuickTryModifyEntity{T}(string, string, Action{T}, bool)"/>

@@ -2,8 +2,8 @@
 {
     /// <summary>
     /// A data-oriented way of handling Buffs.
-    /// <br></br>
-    /// Considered Experimental. 
+    /// <br></br> <br></br>
+    /// EXPERIMENTAL
     /// </summary>
     internal class StatusEffect : ModType, ILocalizedModType
     {

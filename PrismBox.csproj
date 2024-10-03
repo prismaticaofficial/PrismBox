@@ -14,8 +14,7 @@
 
 	<!-- References -->
 	<ItemGroup>
-	  <Folder Include="core\script_plr\plr_comps\" />
-	  <Folder Include="core\script_sys\" />
+	  <Folder Include="core\script_plr\prism_plr_comps\" />
 	  <Folder Include="core\script_proj\" />
 	</ItemGroup>
 	<ItemGroup>

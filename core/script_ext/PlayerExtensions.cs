@@ -14,6 +14,16 @@ namespace PrismBox.core.script_ext
 
         public static int PlayersInRange(this Player plr, float chkRange) => Main.player.Count(x => x.WithinRange(plr.Center, chkRange));
 
+        public static int NextOpenInvSlot(this Player plr) 
+        {
+            int ind = Array.FindIndex(plr.inventory, x => x.IsAir);
+
+            if (ind < Main.InventoryItemSlotsStart || ind > Main.InventoryItemSlotsCount)
+                return -1;
+
+            return ind;
+        }
+
         public static Player ClosestPlayer(this Player plr)
         {
             float closest = float.PositiveInfinity;
