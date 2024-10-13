@@ -15,7 +15,7 @@
 	<!-- References -->
 	<ItemGroup>
 	  <Folder Include="core\script_plr\prism_plr_comps\" />
-	  <Folder Include="core\script_proj\" />
+	  <Folder Include="core\script_tile\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="all">
