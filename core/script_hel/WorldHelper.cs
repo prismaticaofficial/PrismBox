@@ -29,5 +29,7 @@ namespace PrismBox.core.script_hel
             Main.MenuUI.SetState(null);
             return true;
         }
+
+        public static Vector2 SpawnCoords() => new(Main.spawnTileX, Main.spawnTileY);
     }
 }

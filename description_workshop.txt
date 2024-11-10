@@ -18,7 +18,7 @@ Extension Shorthands
 
 Helpers
 - World File Loading in-mod via file path.
-- Crossmod Helper for basic item modification.
+- Crossmod Helper for basic item modification / compat control
 - Localization for getting a random localtext from a list (useful for dialogue / random responses)
 
 
@@ -30,3 +30,6 @@ Status Effects
 - Features stackable buffs, localized names and tooltips, custom time calculations, etc.
 - Status Effects are NOT Components!
 
+ModInvasion
+- An easier way to create invasions. 
+- Offers extra formats (wave-based)

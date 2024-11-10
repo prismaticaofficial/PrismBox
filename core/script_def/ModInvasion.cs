@@ -24,40 +24,32 @@ namespace PrismBox.core.script_def
 
         public short waveCount;
 
-        public static InvasionHandler Handler { get; } = ModContent.GetInstance<InvasionHandler>();
+        public Vector2 InvasionCenter { get => invasionArea.Center.ToVector2(); }
+        public Rectangle invasionArea;
 
         public string LocalizationCategory => "Invasions";
         protected virtual LocalizedText InvasionName => this.GetLocalization(nameof(InvasionName), PrettyPrintName);
         protected virtual LocalizedText InvasionSpawnText => this.GetLocalization(nameof(InvasionSpawnText), () => "");
         protected virtual LocalizedText InvasionDefeatText => this.GetLocalization(nameof(InvasionDefeatText), () => "");
 
-        public static bool StartNew(ModInvasion type, Vector2 startPos)
-        {
-            if (Handler.currentInvasion is not null || Handler.currentInvasion.isActive)
-                return false;
-
-            Handler.currentInvasion = type;
-            type.isActive = true;
-            return true;
-        }
-
-        public static void DefeatInvasion(ModInvasion type)
-        {
-            Handler.currentInvasion = null;
-
-            type.isDefeated = true;
-            type.isActive = false;
-
-            type.OnDefeated();
-        }
+        public virtual void PopulateTypePool(Dictionary<int, (EnemyTypeDesignation type, int creditCost)> enemyTypes) { }
 
         public virtual void SpawnWave(int waveCurr) { }
+        public virtual void OnStart() { }
         public virtual void OnDefeated() { }
         public virtual void OnWaveCompleted() { }
         public virtual void SetDefaults() { }
         public virtual void UpdateInvasion() { }
 
         protected sealed override void Register() { ModTypeLookup<ModInvasion>.Register(this); }
+
+        public override void Load()
+        {
+            enemyTypes = [];
+            PopulateTypePool(enemyTypes);
+
+            base.Load();
+        }
 
         public override void Unload()
         {
