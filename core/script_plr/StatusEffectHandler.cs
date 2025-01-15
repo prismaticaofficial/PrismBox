@@ -6,6 +6,13 @@
 
         public int[] immunities;
 
+        public override void PreUpdateBuffs()
+        {
+
+
+            base.PreUpdateBuffs();
+        }
+
         public override void UpdateDead()
         {
             activeEffects.Clear();

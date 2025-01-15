@@ -9,8 +9,7 @@ namespace PrismBox.core.script_plr
     internal class PlayerComponent : ModPlayer
     {
         /// <summary>
-        /// Whether or not this Component is enabled. <br></br>
-        /// It's suggested to use <see cref="script_ext.PlayerExtensions.TryEnableComponent{T}(Player, Action{T})"/> for enabling.
+        /// Whether or not this Component is enabled.
         /// </summary>
         public bool Enabled { get; set; }
 
