@@ -15,7 +15,7 @@
             if (Enabled)
                 C_AI(projectile);
         }
-        public override void OnKill(Projectile projectile, int timeLeft)
+        public sealed override void OnKill(Projectile projectile, int timeLeft)
         {
             if (Enabled)
                 C_OnKill(projectile, timeLeft);

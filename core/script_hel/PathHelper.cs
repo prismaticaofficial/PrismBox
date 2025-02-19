@@ -2,12 +2,9 @@
 {
     internal class PathHelper
     {
-        public static string PrismPlaceholderPath => "PrismBox/asset/texture/placeholder";
-
         /// <summary>
-        /// Indev. DO NOT USE.
+        /// The path to a placeholder texture you can use for any in-dev entity that requires one. 
         /// </summary>
-        /// <returns></returns>
-        public static string PathBuilder() => "";
+        public static string PrismPlaceholderPath => "PrismBox/asset/texture/placeholder";
     }
 }

@@ -21,6 +21,16 @@ A guide for this architecture is readable in the Wiki.<br>
 *Projectiles and custom ModTypes pending impl. Please be patient!
 
 ### Entity Extensions
+Various entity-centered extensions for both the component impl and for various shorthand checks across all entity types.
+
+### Status Effects (Component-Based Buff Impl) [EXPERIMENTAL]
+Components now handle buffs and utilize custom drawing and update techniques. 
+ModBuff and the original buff system are marked obsolete.
+
+### ModInvasion, an Impl of Custom Invasion Types [EXPERIMENTAL]
+``ModInvasion`` is a concept a lot of developers seek to implement but never made an official release of. PrismBox attempts its own, along with extra functions.
+
+## 
 
 ## CONTRIBUTE
 
@@ -34,6 +44,6 @@ Certain additions and architectural choices were inspired by the following devel
 
 - Tomat (Steviegt6) => Mod disablers in ``CrossmodHelper``
 - absoluteAquarian => ModType handling
+- LolXD87 => Primitive Drawing (prims) impl suggestion
 - Naka => Entity-Component Architecture proposal
-- LolXD87 => Primitive Drawing (primis) impl suggestion
 - Mirsario => Entity-Component Architecture proposal [link]

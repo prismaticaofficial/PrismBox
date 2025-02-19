@@ -1,4 +1,5 @@
 ﻿using PrismBox.core.script_plr;
+using PrismBox.core.script_plr.prism_plr_comps;
 
 namespace PrismBox.core.script_ext
 {
@@ -72,6 +73,34 @@ namespace PrismBox.core.script_ext
 
             comp = temp;
             return true;
+        }
+
+        public static bool IsEnabled<T>(this Player plr) where T : PlayerComponent => plr.TryGetComponent(out T comp) && comp.Enabled; 
+
+        public static bool ApplyStatusEffect<T>(this Player plr, short effectTime, short stackCount = 0) where T : StatusEffectComponent
+        {
+            if (!plr.TryGetComponent(out T comp))
+                return false;
+
+            if (plr.IsEnabled<T>())
+            {
+                if (comp.canStack)
+                    comp.stackCur = (short)Math.Clamp(comp.stackCur + stackCount, 0, comp.stackMax);
+
+                comp.effectTimeCur = (short)Math.Clamp(comp.effectTimeCur + effectTime, 0, comp.effectTimeMax);
+                comp.OnReapply();
+                return true;
+            }
+
+            else
+            {
+                plr.TryEnableComponent<T>(x =>
+                {
+                    x.stackCur += (short)Math.Clamp((int)stackCount, 0, x.stackMax);
+                    x.effectTimeCur += (short)Math.Clamp((int)effectTime, 0, x.effectTimeMax);
+                });
+                return true;
+            }
         }
     }
 }

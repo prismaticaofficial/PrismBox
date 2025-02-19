@@ -1,4 +1,5 @@
 ﻿using Terraria.IO;
+using Terraria.WorldBuilding;
 
 namespace PrismBox.core.script_hel
 {
@@ -15,7 +16,7 @@ namespace PrismBox.core.script_hel
         {
             if (!WorldFile.IsValidWorld(pathTo, isCloud))
             {
-                PrismBox.FormatToLogs(null, $" could not find valid world file at \"{pathTo}\"...", PrismBox.LogType.WARN);
+                PrismBox.FormatToLogs(null, $" could not find valid world file at \"{pathTo}\".", PrismBox.LogType.WARN);
                 return false;
             }
 
@@ -31,5 +32,12 @@ namespace PrismBox.core.script_hel
         }
 
         public static Vector2 SpawnCoords() => new(Main.spawnTileX, Main.spawnTileY);
+
+        public static Dictionary<ushort, int> TileCounter(ushort[] tileIDs, GenShape genShape, Point origin)
+        {
+            Dictionary<ushort, int> tileCounts = [];
+            WorldUtils.Gen(origin, genShape, new Actions.TileScanner(tileIDs).Output(tileCounts));
+            return tileCounts;
+        }
     }
 }

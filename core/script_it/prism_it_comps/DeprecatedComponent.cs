@@ -1,4 +1,7 @@
-﻿namespace PrismBox.core.script_it.prism_it_comps
+﻿using PrismBox.core.script_ext;
+using PrismBox.core.script_hel;
+
+namespace PrismBox.core.script_it.prism_it_comps
 {
     /// <summary>
     /// An Item Component which marks an item "Deprecated", which will default all of its values and render it useless. <br></br>
@@ -114,6 +117,8 @@
 
             foreach (Recipe r in Main.recipe.Where(x => x.createItem == it || x.ContainsIngredient(it.type)))
                 r.DisableRecipe();
+
+            it.TryEnableComponent<TextureComponent>(x => x.path = PathHelper.PrismPlaceholderPath);
 
             base.C_SetDefaults(it);
         }

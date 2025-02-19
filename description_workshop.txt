@@ -17,18 +17,17 @@ Extension Shorthands
 - UI Extension as well for shortening the default settings in initialization.
 
 Helpers
-- World File Loading in-mod via file path.
+- World Helper for various functions, such as world-file loading and tile counting.
 - Crossmod Helper for basic item modification / compat control
 - Localization for getting a random localtext from a list (useful for dialogue / random responses)
 
-
+Status Effects
+- THIS FEATURE IS EXPERIMENTAL. Please use with caution!
+- A component-based solution to ModBuff simplicity.
+- Offers stack-based effects and alternate immunity checks.
+- Only applicable on Players, working on NPC impl. 
 
 IN THE WORKS
-
-Status Effects
-- A more "data-oriented" and easier to manage buff system.
-- Features stackable buffs, localized names and tooltips, custom time calculations, etc.
-- Status Effects are NOT Components!
 
 ModInvasion
 - An easier way to create invasions. 

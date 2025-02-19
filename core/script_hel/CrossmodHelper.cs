@@ -65,6 +65,7 @@ namespace PrismBox.core.script_hel
             });
         }
 
+        //(json blacklist support?)
         //Credit for the above mod disable methods go to Tomat, aka Steviegt6.
 
         /// <summary>

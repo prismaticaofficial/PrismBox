@@ -41,5 +41,12 @@ namespace PrismBox.core.script_ext
             comp = temp;
             return true;
         }
+
+        public static Item CloneWithEdits(this Item it, Action<Item> init = null)
+        {
+            var temp = it.Clone();
+            init.Invoke(temp);
+            return temp;
+        }
     }
 }

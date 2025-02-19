@@ -8,6 +8,7 @@
 		<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="asset\texture\placeholder.png" />
 	  <None Remove="description_workshop.txt" />
 	  <None Remove="localization\en-US_Mods.PrismBox.Configs.PrismBoxConfig.hjson" />
 	</ItemGroup>
@@ -15,7 +16,6 @@
 	<!-- References -->
 	<ItemGroup>
 	  <Folder Include="core\script_conf\" />
-	  <Folder Include="core\script_plr\prism_plr_comps\" />
 	  <Folder Include="core\script_tile\" />
 	</ItemGroup>
 	<ItemGroup>
